@@ -21,11 +21,11 @@ runs:
       shell: bash
 
     - name: convert Snyk Dependencies json to html format
-      run: snyk-to-html -i ${{inputs.DependenciesReportPath}} -o snyk_dependencies.html
+      run: snyk-to-html -i ${{inputs.dependencies-report-path}} -o snyk_dependencies.html
       shell: bash
 
     - name: convert Snyk Code json to html format
-      run: snyk-to-html -i ${{inputs.CodeReportPath}} -o snyk_code.html
+      run: snyk-to-html -i ${{inputs.code-report-path}} -o snyk_code.html
       shell: bash
 
     - name: 'Upload Artifact'
@@ -43,7 +43,7 @@ runs:
       shell: bash
 
     - name: Run script
-      run: python ${{ github.action_path }}/job_summary.py ${{inputs.DependenciesReportPath}} ${{inputs.CodeReportPath}} 
+      run: python ${{ github.action_path }}/job_summary.py ${{inputs.dependencies-report-path}} ${{inputs.code-report-path}} 
       shell: bash
 
     - name: Add output to Job Summary
