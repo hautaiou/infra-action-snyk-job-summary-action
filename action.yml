@@ -30,16 +30,6 @@ runs:
       run: snyk-to-html -i ${{inputs.code-report-path}} -o snyk_code.html
       shell: bash
 
-    - name: 'Upload Artifact'
-      uses: actions/upload-artifact@v4
-      with:
-        name: snyk-details
-        path: |
-          snyk_dependencies.html
-          snyk_code.html
-        retention-days: 7
-        if-no-files-found: ignore
-
     - run: pip install mdutils
       name: install mdutils
       shell: bash
